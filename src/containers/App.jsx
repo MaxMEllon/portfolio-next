@@ -7,21 +7,15 @@ import {
 import Layout from './Layout';
 import Index from '../slides/Index';
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <Router>
-        <Layout>
-          <div>
-            <Route exact path="/" component={Index} />
-            <Route path="/poge" component={() => <div>poge</div>} />
-          </div>
-        </Layout>
-      </Router>
-    );
-  }
+export default function App() {
+  return (
+    <Router>
+      <Layout>
+        <div>
+          <Route exact path="/" component={Index} />
+          <Route path="/poge" component={() => <div>poge</div>} />
+        </div>
+      </Layout>
+    </Router>
+  );
 }

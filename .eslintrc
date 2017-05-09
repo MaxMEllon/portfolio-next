@@ -1,3 +1,4 @@
+---
 extends: airbnb
 parser: babel-eslint
 
@@ -9,3 +10,8 @@ env:
 globals:
   window: false
   document: false
+
+rules:
+  import/no-webpack-loader-syntax: [0]
+  import/no-unresolved: [0]
+  react/prop-types: [0]

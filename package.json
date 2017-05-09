@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "webpack-dev-server --watch",
     "build": "NODE_ENV=production webpack",
-    "lint": "eslint src/",
-    "lint:fix": "eslint --fix src/"
+    "lint": "eslint src/**/*.jsx",
+    "lint:fix": "eslint --fix src/**/*.jsx"
   },
   "babel": {
     "presets": [

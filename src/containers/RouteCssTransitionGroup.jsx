@@ -23,6 +23,7 @@ export default class RouteCSSTransitionGroup extends Component {
 
   componentDidUpdate() {
     if (this.state.previousPathname) {
+      /* eslint react/no-did-update-set-state: 0 */
       this.setState({ previousPathname: null });
     }
   }

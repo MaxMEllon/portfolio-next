@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import RouteCSSTransitionGroup from './RouteCSSTransitionGroup';
 
 export default function Layout({ children }) {
