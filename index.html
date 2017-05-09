@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset='UTF-8'>
+    <title>maxmellon.github.io</title>
+    <style>
+      .routing-enter {
+        opacity: 0.01;
+      }
+
+      .routing-enter.routing-enter-active {
+        opacity: 1;
+        transition: opacity 500ms ease-in;
+      }
+
+      .routing-leave {
+        opacity: 1;
+      }
+
+      .routing-leave.routing-leave-active {
+        opacity: 0.01;
+        transition: opacity 300ms ease-in;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="bundle.js"></script>
+  </body>
+</html>
