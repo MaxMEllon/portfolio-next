@@ -36,11 +36,18 @@ const config = {
       },
       {
         test: /\.jpg$|\.png$|\.gif$/,
-        use: ['file-loader&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]'],
+        use: ['file-loader?name=dist/[path][name].[ext]'],
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader?modules'],
+        use: [
+          'style-loader',
+          'css-loader?modules&localIdentName=[path][name]---[local]---[hash:base64:5]',
+          {
+            loader: 'postcss-loader',
+            options: { config: { path: './postcss.config.js' } },
+          },
+        ],
       },
     ],
   },
