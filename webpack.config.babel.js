@@ -24,6 +24,9 @@ const config = {
     filename: 'bundle.js',
     libraryTarget: 'umd',
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   module: {
     loaders: [
       {

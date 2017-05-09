@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom'
-import Layout from './Layout.jsx';
+import Layout from './Layout';
 
 export default class App extends React.Component {
   constructor(props) {
