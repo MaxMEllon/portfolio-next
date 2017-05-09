@@ -34,6 +34,14 @@ const config = {
         exclude: /node_modules|bower_components/,
         use: ['babel-loader'],
       },
+      {
+        test: /\.jpg$|\.png$|\.gif$/,
+        use: ['file-loader&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]'],
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader?modules'],
+      },
     ],
   },
   plugins: DEV ? [
