@@ -1,0 +1,46 @@
+.nav {
+  height: 30px;
+  line-height: 30px;
+  background-color: #006c61;
+  color: white;
+}
+
+.title {
+  padding-left: 40px;
+}
+
+.rightBox {
+  width: 500px;
+  float: right;
+  display: block;
+}
+
+.rightBox li {
+  display: inline-block;
+}
+
+.item {
+  font-size: 12px;
+  width: auto;
+}
+
+.item span {
+  padding: 0 10px;
+}
+
+.item::after {
+  content: '/';
+}
+
+.lastItem {
+  font-size: 12px;
+  width: 50px;
+}
+
+.lastItem span {
+  padding: 0 10px;
+}
+
+.iconItem {
+  font-family: 'Font awesome';
+}
