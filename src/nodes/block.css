@@ -1,0 +1,7 @@
+.button {
+  width: 12vw;
+  height: 12vw;
+  position: fixed;
+  text-align: center;
+  line-height: 12vw;
+}

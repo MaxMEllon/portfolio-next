@@ -1,7 +1,10 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactCSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import StaticContainer from 'react-static-container';
+
+const getPathname = router => _.get(router, ['route', 'location', 'pathname'], null);
 
 export default class RouteCSSTransitionGroup extends Component {
   static contextTypes = {
@@ -14,8 +17,8 @@ export default class RouteCSSTransitionGroup extends Component {
   }
 
   componentWillReceiveProps(nextProps, nextContext) {
-    const nextPathname = nextContext.router.route.location.pathname;
-    const currentPathname = this.context.router.route.location.pathname;
+    const nextPathname = getPathname(nextContext.router);
+    const currentPathname = getPathname(this.context.router);
     if (nextPathname !== currentPathname) {
       this.setState({ previousPathname: currentPathname });
     }
@@ -31,7 +34,7 @@ export default class RouteCSSTransitionGroup extends Component {
   render() {
     const { children, ...props } = this.props;
     const { previousPathname } = this.state;
-    const currentPathname = this.context.router.route.location.pathname;
+    const currentPathname = getPathname(this.context.router);
     return (
       <ReactCSSTransitionGroup {...props}>
         <StaticContainer
