@@ -11,11 +11,14 @@ console.log(`[DEV] ==> ${green}${DEV}${reset}`);
 
 const config = {
   entry: {
-    app: [
+    app: DEV ? [
       'babel-polyfill',
       'react-hot-loader/patch',
       'webpack/hot/only-dev-server',
       'webpack-dev-server/client?http://localhost:3000',
+      './src/main.jsx',
+    ] : [
+      'babel-polyfill',
       './src/main.jsx',
     ],
   },
@@ -43,10 +46,7 @@ const config = {
         use: [
           'style-loader',
           'css-loader?modules&localIdentName=[path][name]---[local]---[hash:base64:5]',
-          {
-            loader: 'postcss-loader',
-            options: { config: { path: './postcss.config.js' } },
-          },
+          'postcss-loader',
         ],
       },
     ],
@@ -68,7 +68,7 @@ const config = {
     historyApiFallback: true,
     hot: true,
   },
-  devtool: 'inline-source-map',
+  devtool: DEV ? 'inline-source-map' : '',
 };
 
 module.exports = config;
