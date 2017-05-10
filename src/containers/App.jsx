@@ -3,9 +3,11 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
+  Link,
 } from 'react-router-dom';
 import Layout from './Layout';
 import Index from '../slides/Index';
+import About from '../slides/About';
 
 export default function App() {
   return (
@@ -13,7 +15,7 @@ export default function App() {
       <Layout>
         <div>
           <Route exact path="/" component={Index} />
-          <Route path="/poge" component={() => <div>poge</div>} />
+          <Route path="/poge" component={About} />
         </div>
       </Layout>
     </Router>
