@@ -6,8 +6,8 @@ export default function Block({ x, y, color, backgroundColor, content }) {
     <div
       className={styles.button}
       style={{
-        top: `${(y * 12)}vw`,
-        left: `${(x * 12)}vw`,
+        top: `calc(100vh / 6 * ${y})`,
+        left: `calc(100vw / 6 * ${x})`,
         color,
         backgroundColor,
       }}

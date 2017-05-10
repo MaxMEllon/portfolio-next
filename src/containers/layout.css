@@ -1,0 +1,10 @@
+.nav {
+  height: 30px;
+  line-height: 30px;
+  background-color: #006c61;
+  color: white;
+}
+
+.title {
+  padding-left: 40px;
+}

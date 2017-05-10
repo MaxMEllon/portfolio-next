@@ -1,6 +1,6 @@
 .button {
-  width: 12vw;
-  height: 12vw;
+  width: calc(100vw / 6);
+  height: calc(100vh / 6);
   position: fixed;
   text-align: center;
   line-height: 12vw;
