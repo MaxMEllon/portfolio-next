@@ -9,13 +9,16 @@ export const initialState = {
   activities: null,
   projects: null,
   environment: null,
+  loading: false,
 };
 
+const loading = createReducer({
+  [actions.startFetch]: () => true,
+  [actions.endFetch]: () => false,
+}, initialState.loading);
+
 const about = createReducer({
-  [actions.okFetchAboutInfo]: (state, payload) => {
-    const about = new AboutRecord({ ...payload });
-    return about;
-  },
+  [actions.okFetchAboutInfo]: (state, payload) => new AboutRecord({ ...payload }),
 }, initialState.about);
 
 const environment = createReducer({
@@ -37,5 +40,6 @@ export default combineReducers(
     articles,
     activities,
     projects,
+    loading,
   },
 );

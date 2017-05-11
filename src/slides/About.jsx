@@ -6,12 +6,14 @@ import {
 } from '../actions';
 
 class About extends React.Component {
-
   componentDidMount() {
     this.props.dispatch(fetchAboutInfo());
   }
 
   render() {
+    try {
+      console.log(this.props.about.toJS());
+    } catch (err) {}
     return (
       <div className={styles.container}>
         <div>haaaaaage</div>
@@ -21,5 +23,5 @@ class About extends React.Component {
 }
 
 export default connect(
-  state => ({ about: state.about })
+  state => ({ about: state.about }),
 )(About);
