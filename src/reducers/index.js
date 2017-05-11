@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { createReducer } from 'redux-act';
 import * as actions from '../actions';
+import * as loadingTypes from '../constants/LoadingTypes';
 import AboutRecord from '../records/About';
 
 export const initialState = {
@@ -9,12 +10,12 @@ export const initialState = {
   activities: null,
   projects: null,
   environment: null,
-  loading: false,
+  loading: loadingTypes.INITIAL,
 };
 
 const loading = createReducer({
-  [actions.startFetch]: () => true,
-  [actions.endFetch]: () => false,
+  [actions.startFetch]: () => loadingTypes.START_LOADING,
+  [actions.endFetch]: () => loadingTypes.END_LOADING,
 }, initialState.loading);
 
 const about = createReducer({
