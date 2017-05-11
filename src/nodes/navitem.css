@@ -8,6 +8,16 @@
   padding: 0 10px;
 }
 
+.item > span > a {
+  color: white;
+  text-decoration: initial;
+}
+
+.item span > a:hover {
+  color: #60ff00;
+  text-shadow: 0px 0px 10px rgb(255, 255, 255);
+  cursor: pointer;
+}
 .item::after {
   content: '/';
 }
@@ -20,4 +30,15 @@
 
 .lastItem span {
   padding: 0 10px;
+}
+
+.lastItem > span > a {
+  color: white;
+  text-decoration: initial;
+}
+
+.lastItem span > a:hover {
+  color: #60ff00;
+  text-shadow: 0px 0px 10px rgb(255, 255, 255);
+  cursor: pointer;
 }

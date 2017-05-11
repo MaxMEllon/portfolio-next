@@ -8,7 +8,7 @@ export default function Layout({ children }) {
       <Navbar title="maxmellon.github.io" />
       <RouteCSSTransitionGroup
         component="div" transitionName="routing"
-        transitionEnterTimeout={250} transitionLeaveTimeout={250}
+        transitionEnterTimeout={1000} transitionLeaveTimeout={400}
       >
         {children}
       </RouteCSSTransitionGroup>

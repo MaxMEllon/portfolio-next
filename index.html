@@ -4,24 +4,26 @@
     <meta charset='UTF-8'>
     <title>maxmellon.github.io</title>
     <style>
-      .routing-enter {
-        opacity: 0.01;
-      }
-
-      .routing-enter.routing-enter-active {
-        opacity: 1;
-        transition: opacity 500ms ease-in;
-      }
-
       .routing-leave {
         opacity: 1;
       }
-
       .routing-leave.routing-leave-active {
-        opacity: 0.01;
-        transition: opacity 300ms ease-in;
+        opacity: 0;
+        transition: opacity .4s ease-in;
       }
 
+      .routing-enter {
+        opacity: 0;
+      }
+      .routing-enter.routing-enter-active {
+        opacity: 1;
+        /* Delay the enter animation until the leave completes */
+        transition: opacity .4s ease-in .6s;
+      }
+
+      .routing-height {
+        transition: height .6s ease-in-out;
+      }
       body {
         font-family: 'M+ C Type-1 (basic latin) Regular', 'M+ Type-1 (general-j) Regular', sans-serif;
       }

@@ -8,11 +8,11 @@ export default function Navbar({ title }) {
     <nav className={styles.nav}>
       <span className={styles.title}>{title}</span>
       <ul className={styles.rightBox}>
-        <NavItem content="About" />
-        <NavItem content="Environment" />
-        <NavItem content="Articles" />
-        <NavItem content="Activities" />
-        <NavItem last content="Projects" />
+        <NavItem to="/abouts" content="About" />
+        <NavItem to="/environments" content="Environment" />
+        <NavItem to="/articles" content="Articles" />
+        <NavItem to="/activities" content="Activities" />
+        <NavItem last to="/projects" content="Projects" />
         <NavIconItem iconName="twitter" />
         <NavIconItem iconName="facebook-square" />
         <NavIconItem iconName="github-alt" />

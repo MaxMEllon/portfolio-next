@@ -16,7 +16,11 @@ export default function App() {
       <Layout>
         <div>
           <Route exact path="/" component={Index} />
-          <Route path="/poge" component={About} />
+          <Route path="/abouts" component={About} />
+          <Route path="/environments" component={About} />
+          <Route path="/articles" component={About} />
+          <Route path="/activities" component={About} />
+          <Route path="/projects" component={About} />
         </div>
       </Layout>
     </Router>

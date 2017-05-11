@@ -6,3 +6,9 @@
 .iconItem span {
   padding: 0 5px;
 }
+
+.iconItem span:hover {
+  color: #60ff00;
+  text-shadow: 0px 0px 10px rgb(255, 255, 255);
+  cursor: pointer;
+}
