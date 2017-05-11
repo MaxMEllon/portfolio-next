@@ -9,10 +9,10 @@ export default function Navbar({ title }) {
       <span className={styles.title}>{title}</span>
       <ul className={styles.rightBox}>
         <NavItem to="/abouts" content="About" />
-        <NavItem to="/environments" content="Environment" />
         <NavItem to="/articles" content="Articles" />
         <NavItem to="/activities" content="Activities" />
-        <NavItem last to="/projects" content="Projects" />
+        <NavItem to="/environments" content="Environment" />
+        <NavItem to="/projects" content="Projects" last />
         <NavIconItem iconName="twitter" />
         <NavIconItem iconName="facebook-square" />
         <NavIconItem iconName="github-alt" />

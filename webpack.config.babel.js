@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const { name } = require('./package.json');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+const Dotenv = require('dotenv-webpack');
 
 const DEV = process.env.NODE_ENV !== 'production';
 
@@ -65,11 +65,13 @@ const config = {
   },
   plugins: DEV ? [
     new ExtractTextPlugin('bundle.css'),
+    new Dotenv({ path: './.env' }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
   ] : [
     new ExtractTextPlugin('bundle.css'),
+    new Dotenv({ path: './.env' }),
     new webpack.LoaderOptionsPlugin({ minimize: true }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: false,

@@ -1,10 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styles from './about.css';
+import {
+  fetchAboutInfo,
+} from '../actions';
 
-export default function About() {
-  return (
-    <div className={styles.container}>
-      <div>haaaaaage</div>
-    </div>
-  );
+class About extends React.Component {
+
+  componentDidMount() {
+    this.props.dispatch(fetchAboutInfo());
+  }
+
+  render() {
+    return (
+      <div className={styles.container}>
+        <div>haaaaaage</div>
+      </div>
+    );
+  }
 }
+
+export default connect(
+  state => ({ about: state.about })
+)(About);
