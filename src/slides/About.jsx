@@ -11,9 +11,6 @@ class About extends React.Component {
   }
 
   render() {
-    try {
-      console.log(this.props.about.toJS());
-    } catch (err) {}
     return (
       <div className={styles.container}>
         <div>haaaaaage</div>

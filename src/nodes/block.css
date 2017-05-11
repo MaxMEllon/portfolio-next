@@ -1,7 +1,97 @@
 .button {
-  width: calc(100vw / 6);
-  height: calc(100vh / 6);
-  position: fixed;
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  background-color: #006c61;
+  color: white;
   text-align: center;
-  line-height: 12vw;
+  line-height: 120px;
+  font-size: 15px;
+  /* box-shadow: 0 0 2px 2px #60aba0; */
+  z-index: 9999;
+  cursor: pointer;
+  transition: all 300ms 0s ease;
+}
+
+.background {
+  right: 50px;
+  top: 440px;
+  width: 360px;
+  height: 240px;
+  position: absolute;
+  background-color: white;
+  z-index: 4567;
+  cursor: pointer;
+}
+
+.About {
+  right: 290px;
+  top: 440px;
+  background-color: #4e3cb5;
+}
+
+.About:hover {
+  right: 300px;
+  top: 430px;
+  background-color: #8b80c7;
+}
+
+.Articles {
+  right: 170px;
+  top: 440px;
+  background-color: #b53c7a;
+}
+
+.Articles:hover {
+  right: 180px;
+  top: 430px;
+  background-color: #ff8ac6;
+}
+
+.Activities {
+  right: 50px;
+  top: 440px;
+  background-color: #a8b53c;
+}
+
+.Activities:hover {
+  right: 60px;
+  top: 430px;
+  background-color: #d4de83;
+}
+
+.Environment {
+  right: 290px;
+  top: 560px;
+  background-color: #b53c3c;
+}
+
+.Environment:hover {
+  right: 300px;
+  top: 550px;
+  background-color: #f1a3a3;
+}
+
+.Project {
+  right: 170px;
+  top: 560px;
+  background-color: #3cb56c;
+}
+
+.Project:hover {
+  right: 180px;
+  top: 550px;
+  background-color: #abf7c9;
+}
+
+.Links {
+  right: 50px;
+  top: 560px;
+  background-color: #78c7d3;
+}
+
+.Links:hover {
+  right: 60px;
+  top: 550px;
+  background-color: #ddfbff;
 }

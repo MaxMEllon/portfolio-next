@@ -8,7 +8,7 @@ export default function Navbar({ title }) {
     <nav className={styles.nav}>
       <span className={styles.title}>{title}</span>
       <ul className={styles.rightBox}>
-        <NavItem to="/abouts" content="About" />
+        <NavItem to="/about" content="About" />
         <NavItem to="/articles" content="Articles" />
         <NavItem to="/activities" content="Activities" />
         <NavItem to="/environments" content="Environment" />
