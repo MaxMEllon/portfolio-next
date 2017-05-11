@@ -8,10 +8,25 @@
   margin-top: 50px;
   height: 30%;
   width: 100%;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.upBox p {
+  padding-left: 50px;
+  padding-top: 177px;
+  font-size: 35px
 }
 
 .downBox {
   height: 70%;
   width: 100%;
   background-color: #006c61;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.downBox p {
+  color: white;
+  font-size: 35px;
+  padding-left:50px;
+  padding-top: 5px;
 }

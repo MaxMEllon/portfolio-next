@@ -9,7 +9,7 @@
     "lint:js": "eslint src/**/*.jsx",
     "lint:css": "stylelint src/**/*.css",
     "lint": "npm-run-all -c --parallel lint:*",
-    "fmt:js": "eslint --fix src/**/*.jsx",
+    "fmt:js": "eslint --fix `git ls-files | grep -v config | grep -E \\.jsx\\?\\$`",
     "fmt:css": "stylefmt src/**/*.css",
     "fmt": "npm-run-all -c --parallel fmt:*"
   },
@@ -76,6 +76,7 @@
     "react-transition-group": "^1.1.3",
     "redux": "^3.6.0",
     "redux-act": "^1.2.0",
+    "redux-logger": "^3.0.1",
     "redux-saga": "^0.15.3",
     "reset.css": "^2.0.2"
   }

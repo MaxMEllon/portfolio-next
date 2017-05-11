@@ -7,5 +7,5 @@ export default function NavIitem({ iconName }) {
     <li className={styles.iconItem}>
       <Icon name={iconName} />
     </li>
-  )
+  );
 }
