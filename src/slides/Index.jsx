@@ -4,7 +4,6 @@ import Block from '../nodes/Block';
 
 export default function Index() {
   return (
-    <div className={styles.container}>
-    </div>
+    <div className={styles.container} />
   );
 }

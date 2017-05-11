@@ -14,33 +14,3 @@
   float: right;
   display: block;
 }
-
-.rightBox li {
-  display: inline-block;
-}
-
-.item {
-  font-size: 12px;
-  width: auto;
-}
-
-.item span {
-  padding: 0 10px;
-}
-
-.item::after {
-  content: '/';
-}
-
-.lastItem {
-  font-size: 12px;
-  width: 50px;
-}
-
-.lastItem span {
-  padding: 0 10px;
-}
-
-.iconItem {
-  font-family: 'Font awesome';
-}

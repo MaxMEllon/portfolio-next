@@ -1,0 +1,8 @@
+.iconItem {
+  display: inline-block;
+  width: auto;
+}
+
+.iconItem span {
+  padding: 0 5px;
+}

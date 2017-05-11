@@ -1,32 +1,21 @@
 import React from 'react';
 import styles from './navbar.css';
-import { Icon } from 'react-fa';
+import NavItem from '../nodes/NavItem';
+import NavIconItem from '../nodes/NavIconItem';
 
-export default function Navbar() {
+export default function Navbar({ title }) {
   return (
     <nav className={styles.nav}>
-      <span className={styles.title}>maxmellon.github.io</span>
+      <span className={styles.title}>{title}</span>
       <ul className={styles.rightBox}>
-        <li className={styles.item}>
-          <span>About</span>
-        </li>
-        <li className={styles.item}>
-          <span>Encironment</span>
-        </li>
-        <li className={styles.item}>
-          <span>Articles</span>
-        </li>
-        <li className={styles.item}>
-          <span>Activities</span>
-        </li>
-        <li className={styles.item}>
-          <span>Projects</span>
-        </li>
-        <li className={styles.lastItem}>
-          <span>Links</span>
-        </li>
-        <li className={styles.iconItem}>
-        </li>
+        <NavItem content="About" />
+        <NavItem content="Environment" />
+        <NavItem content="Articles" />
+        <NavItem content="Activities" />
+        <NavItem last content="Projects" />
+        <NavIconItem iconName="twitter" />
+        <NavIconItem iconName="facebook-square" />
+        <NavIconItem iconName="github-alt" />
       </ul>
     </nav>
   );

@@ -1,0 +1,23 @@
+.item {
+  display: inline-block;
+  font-size: 12px;
+  width: auto;
+}
+
+.item span {
+  padding: 0 10px;
+}
+
+.item::after {
+  content: '/';
+}
+
+.lastItem {
+  display: inline-block;
+  font-size: 12px;
+  width: auto;
+}
+
+.lastItem span {
+  padding: 0 10px;
+}
