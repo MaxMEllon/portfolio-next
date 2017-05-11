@@ -1,24 +1,24 @@
 import axios from 'axios';
-import { fork, take, put, call } from 'redux-saga/effects';
-import { eventChannel } from 'redux-saga';
+import { take, put, call, takeEvery } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 import * as actions from '../actions';
 
-const x = undefined;
+const fetchAboutPromisify = () => (
+  axios.get(`${process.env.API_BASE_URL}/about.json`)
+);
 
-function* aboutSaga() {
-  while (typeof x === 'undefined') {
-    yield take(actions.FETCH_ABOUT_INFO);
-    yield put(actions.startFetch());
-    try {
-      const response = yield call(() => axios.get(`${process.env.API_BASE_URL}/about.json`));
-      yield put(actions.okFetchAboutInfo(response.data));
-    } catch (err) {
-      yield put(actions.ngFetchAboutInfo(err));
-    }
-    yield put(actions.endFetch());
+function* aboutTask() {
+  yield put(actions.startFetch());
+  yield delay(500);
+  try {
+    const response = yield call(fetchAboutPromisify);
+    yield put(actions.okFetchAboutInfo(response.data));
+  } catch (err) {
+    yield put(actions.ngFetchAboutInfo(err));
   }
+  yield put(actions.endFetch());
 }
 
 export default function* rootSaga() {
-  yield fork(aboutSaga);
+  yield takeEvery(actions.FETCH_ABOUT_INFO, aboutTask);
 }
