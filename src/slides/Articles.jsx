@@ -1,4 +1,4 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Icon } from 'react-fa';
@@ -13,9 +13,17 @@ class Articles extends React.Component {
   }
 
   render() {
-    if (M.isNil(this.props.about)) return <LoadingSlide />;
+    if (M.isNil(this.props.articles)) return <LoadingSlide />;
     return (
-      <div />
+      <div className={styles.container}>
+        <div className={styles.paper}>
+          <h1 className={styles.header}>
+            <Icon name="desktop" />
+            <span className={styles.title}>About</span>
+          </h1>
+          <hr className={styles.line} />
+        </div>
+      </div>
     );
   }
 }

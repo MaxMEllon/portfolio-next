@@ -4,10 +4,9 @@ import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import App from './containers/App';
 import createStore from './stores';
-import { initialState } from './reducers';
 
 const el = document.getElementById('root');
-const store = createStore(initialState);
+const store = createStore();
 
 const render = (Component) => {
   ReactDOM.render(
