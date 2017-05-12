@@ -11,3 +11,10 @@ export const OK_FETCH_ABOUT_INFO = 'OK_FETCH_ABOUT_INFO';
 export const okFetchAboutInfo = createAction(OK_FETCH_ABOUT_INFO);
 export const NG_FETCH_ABOUT_INFO = 'NG_FETCH_ABOUT_INFO';
 export const ngFetchAboutInfo = createAction(NG_FETCH_ABOUT_INFO);
+
+export const FETCH_ARTICLES = 'FETCH_ARTICLES';
+export const fetchArticles = createAction(FETCH_ARTICLES);
+export const OK_FETCH_ARTICLES = 'OK_FETCH_ARTICLES';
+export const okFetchArticles = createAction(OK_FETCH_ARTICLES);
+export const NG_FETCH_ARTICLES = 'NG_FETCH_ARTICLES';
+export const ngFetchArticles = createAction(NG_FETCH_ARTICLES);

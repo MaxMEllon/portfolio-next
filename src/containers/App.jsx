@@ -9,6 +9,7 @@ import {
 import Layout from './Layout';
 import Index from '../slides/Index';
 import About from '../slides/About';
+import Articles from '../slides/Articles';
 
 export default function App() {
   return (
@@ -18,7 +19,7 @@ export default function App() {
           <Route exact path="/" component={Index} />
           <Route path="/about" component={About} />
           <Route path="/environment" component={About} />
-          <Route path="/articles" component={About} />
+          <Route path="/articles" component={Articles} />
           <Route path="/activities" component={About} />
           <Route path="/projects" component={About} />
         </div>
