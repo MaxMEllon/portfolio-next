@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack-dev-server --progress --watch",
-    "build": "NODE_ENV=production webpack --progress",
+    "build": "NODE_ENV=production webpack --progress -p",
     "lint:js": "eslint src/**/*.jsx",
     "lint:css": "stylelint src/**/*.css",
     "lint": "npm-run-all -c --parallel lint:*",

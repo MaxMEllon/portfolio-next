@@ -15,7 +15,7 @@ function* aboutTask() {
   yield put(actions.startFetch());
   try {
     const response = yield call(fetchAboutPromisify);
-    yield delay(500);
+    yield delay(200);
     yield put(actions.okFetchAboutInfo(response.data));
   } catch (err) {
     yield put(actions.ngFetchAboutInfo(err));
@@ -27,7 +27,7 @@ function* articlesTask() {
   yield put(actions.startFetch());
   try {
     const response = yield call(fetchArticlesPromisify);
-    yield delay(500);
+    yield delay(200);
     yield put(actions.okFetchArticles(response.data));
   } catch (err) {
     yield put(actions.ngFetchArticles(err));

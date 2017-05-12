@@ -7,7 +7,8 @@ import rootSaga from '../sagas';
 
 const stateTransformer = (state) => {
   const newState = {};
-  Object.keys(state).forEach((v, k) => {
+  Object.keys(state).forEach((k) => {
+    const v = state[k];
     newState[k] = Iterable.isIterable(v) ? v.toJS() : v;
   });
   return newState;

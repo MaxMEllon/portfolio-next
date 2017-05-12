@@ -19,6 +19,6 @@ const render = (Component) => {
   );
 };
 
-render(App);
+document.addEventListener('DOMContentLoaded', () => render(App));
 
 if (module.hot) module.hot.accept('./containers/App', () => render(App));
