@@ -51,10 +51,10 @@
 .circle1 {
   z-index: 103;
   position: absolute;
-  left: 100px;
+  left: 150px;
   background-color: #006c61;
   bottom: 0px;
-  width: 500px;
-  height: 500px;
-  border-radius: 500px;
+  width: 450px;
+  height: 450px;
+  border-radius: 450px;
 }

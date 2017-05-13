@@ -25,7 +25,7 @@ const config = {
     ],
   },
   output: {
-    path: `${__dirname}/dist/`,
+    path: `${__dirname}/docs/`,
     filename: 'bundle.js',
     libraryTarget: 'umd',
   },
