@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './skipstone.css';
+import styles from './heartstone.css';
 
 export default function SkipStone() {
   return (
