@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset='UTF-8'>
+    <title>maxmellon.github.io</title>
+    <style>
+      .routing-leave {
+        opacity: 1;
+      }
+      .routing-leave.routing-leave-active {
+        opacity: 0;
+        transition: opacity .4s ease-in;
+      }
+
+      .routing-enter {
+        opacity: 0;
+      }
+      .routing-enter.routing-enter-active {
+        opacity: 1;
+        transition: opacity .4s ease-in .6s;
+      }
+
+      .routing-height {
+        transition: height .6s ease-in-out;
+      }
+      body {
+        font-family: 'M+ C Type-1 (basic latin) Regular', 'M+ Type-1 (general-j) Regular', sans-serif;
+      }
+
+    </style>
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="bundle.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="bundle.js"></script>
+  </body>
+</html>
