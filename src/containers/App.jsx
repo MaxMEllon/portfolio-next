@@ -3,6 +3,7 @@ import '!style-loader!css-loader!font-awesome/css/font-awesome.min.css';
 import '!style-loader!css-loader!./layout.css';
 import React from 'react';
 import {
+  Switch,
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom';
@@ -15,14 +16,16 @@ export default function App() {
   return (
     <Router>
       <Layout>
-        <div>
+        <Switch>
           <Route exact path="/" component={Index} />
+          <Route path="/index" component={Index} />
           <Route path="/about" component={About} />
           <Route path="/environment" component={About} />
           <Route path="/articles" component={Articles} />
           <Route path="/activities" component={About} />
           <Route path="/projects" component={About} />
-        </div>
+          <Route component={Index} />
+        </Switch>
       </Layout>
     </Router>
   );
