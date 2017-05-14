@@ -29,18 +29,27 @@ const prodEntry = [
 // */ }}}
 
 // Loaders /* {{{
-const jsxLoader = {
-  test: /\.jsx?$/,
-  exclude: /node_modules|bower_components/,
-  use: ['babel-loader'],
-};
+const jsxLoader = () => (
+  match(process.env.NODE_ENV, [
+    development => ({
+      test: /\.jsx?$/,
+      exclude: /node_modules|bower_components/,
+      use: ['babel-loader'],
+    }),
+    production => ({
+      test: /\.jsx?$/,
+      use: ['babel-loader'],
+    }),
+    _ => ({}),
+  ])
+);
 
-const imageLoader = {
+const imageLoader = () => ({
   test: /\.jpg$|\.png$|\.gif$/,
   use: ['file-loader?name=dist/[path][name].[ext]'],
-};
+});
 
-const styleLoader = {
+const styleLoader = () => ({
   test: /\.css$/,
   use: ExtractTextPlugin.extract({
     fallback: 'style-loader',
@@ -49,25 +58,25 @@ const styleLoader = {
       'postcss-loader',
     ],
   }),
-};
+});
 
-const woffLoader = {
+const woffLoader = () => ({
   test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
   loader: 'url-loader?limit=10000&mimetype=application/font-woff',
-};
+});
 
-const fontLoader = {
+const fontLoader = () => ({
   test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
   loader: 'file-loader',
-};
+});
 
 const getUsingLoader = () => (
   [
-    jsxLoader,
-    imageLoader,
-    styleLoader,
-    woffLoader,
-    fontLoader,
+    jsxLoader(),
+    imageLoader(),
+    styleLoader(),
+    woffLoader(),
+    fontLoader(),
   ]
 );
 // */ }}}
