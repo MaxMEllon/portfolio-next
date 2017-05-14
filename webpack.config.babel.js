@@ -1,8 +1,9 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
-const match = require('rust-match');
+const fun = require('funcy');
 
+const $ = fun.parameter;
 const DEV = process.env.NODE_ENV !== 'production';
 
 const green = '\u001b[32m';
@@ -30,18 +31,18 @@ const prodEntry = [
 
 // Loaders /* {{{
 const jsxLoader = () => (
-  match(process.env.NODE_ENV, [
-    development => ({
+  fun(
+    ['development', () => ({
       test: /\.jsx?$/,
       exclude: /node_modules|bower_components/,
       use: ['babel-loader'],
-    }),
-    production => ({
+    })],
+    ['production', () => ({
       test: /\.jsx?$/,
       use: ['babel-loader'],
-    }),
-    _ => ({}),
-  ])
+    })],
+    [$, () => { throw new TypeError('Unexpected LoadingTypes.'); }],
+  )(process.env.NODE_ENV)
 );
 
 const imageLoader = () => ({
@@ -105,19 +106,21 @@ const getPlugins = () => {
   plugins
     .push(new ExtractTextPlugin('bundle.css'))
     .push(new Dotenv({ path: './.env' }));
-  match(process.env.NODE_ENV, [
-    development =>
+  fun(
+    ['development', () => (
       plugins
         .push(new webpack.HotModuleReplacementPlugin())
         .push(new webpack.NamedModulesPlugin())
-        .push(new webpack.NoEmitOnErrorsPlugin()),
-    production =>
+        .push(new webpack.NoEmitOnErrorsPlugin())
+    )],
+    ['production', () => (
       plugins
         .push(new webpack.DefinePlugin(defineOpt))
         .push(new webpack.LoaderOptionsPlugin({ minimize: true }))
-        .push(new webpack.optimize.UglifyJsPlugin(uglifyOpt)),
-    (_) => { throw new Error('Unexpected NODE_ENV type.'); },
-  ]);
+        .push(new webpack.optimize.UglifyJsPlugin(uglifyOpt))
+    )],
+    [$, () => { throw new TypeError('Unexpected LoadingTypes.'); }],
+  )(process.env.NODE_ENV);
   console.log('');
   return plugins;
 };

@@ -2430,6 +2430,10 @@ function-bind@^1.0.2, function-bind@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.0.tgz#16176714c801798e4e8f2cf7f7529467bb4a5771"
 
+funcy@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/funcy/-/funcy-0.1.0.tgz#c5ae8a29a46b5b1c5e499f22c33b97983441821f"
+
 gather-stream@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/gather-stream/-/gather-stream-1.0.0.tgz#b33994af457a8115700d410f317733cbe7a0904b"
@@ -4877,10 +4881,6 @@ run-async@^0.1.0:
   resolved "https://registry.yarnpkg.com/run-async/-/run-async-0.1.0.tgz#c8ad4a5e110661e402a7d21b530e009f25f8e389"
   dependencies:
     once "^1.3.0"
-
-rust-match@^0.1.7:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/rust-match/-/rust-match-0.1.7.tgz#7fe4db6c135168eb5514ad731050be7509a927b9"
 
 rx-lite@^3.1.2:
   version "3.1.2"
