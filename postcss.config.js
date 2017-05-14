@@ -1,5 +1,5 @@
 /* eslint no-unused-vars: 0 */
-module.exports = ({ _, options, env }) => (
+module.exports = () => (
   {
     plugins: [
       require('postcss-cssnext'),

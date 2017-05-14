@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --progress --watch",
+    "dev": "NODE_ENV=development webpack-dev-server --progress --watch",
     "build": "NODE_ENV=production webpack --progress -p",
     "lint:js": "eslint src/**/*.jsx",
     "lint:css": "stylelint src/**/*.css",
@@ -80,6 +80,7 @@
     "redux-act": "^1.2.0",
     "redux-logger": "^3.0.1",
     "redux-saga": "^0.15.3",
-    "reset.css": "^2.0.2"
+    "reset.css": "^2.0.2",
+    "rust-match": "^0.1.7"
   }
 }
