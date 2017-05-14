@@ -13,7 +13,6 @@ function Loading({ loading }) {
     INITIAL => null,
     START_LOADING => `${styles.container} ${animated} ${animations.fadeIn}`,
     END_LOADING => `${styles.container} ${animated} ${animations.fadeOut}`,
-    _ => 'unexpected',
   ]);
   return (
     <div className={klass}>
