@@ -6,7 +6,7 @@ import * as actions from '../actions';
 /**
  * fetchAboutPromisify()
  * wrapped axios.get() for effects of redux-saga.
- * @return {Promise} promisify XML request by axios
+ * @return {Promise} promisify XHR by axios
  */
 const fetchAboutPromisify = () => (
   axios.get(`${process.env.API_BASE_URL}/about.json`)
@@ -15,7 +15,7 @@ const fetchAboutPromisify = () => (
 /**
  * fetchArticlesPromisify()
  * wrapped axios.get() for effects of redux-saga.
- * @return {Promise} promisify XML request by axios
+ * @return {Promise} promisify XHR by axios
  */
 const fetchArticlesPromisify = () => (
   axios.get(`${process.env.API_BASE_URL}/article.json`)
