@@ -9,7 +9,7 @@ export default function LoadingSlide() {
         textAlign: 'center',
         fontSize: '120px',
         width: '100%',
-        marginTop: 'calc(50% - 170px)',
+        marginTop: 'calc(50% - 220px)',
       }}
     >
       <Icon spin name="spinner" />

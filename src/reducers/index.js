@@ -3,8 +3,10 @@ import { combineReducers } from 'redux';
 import { createReducer } from 'redux-act';
 import * as actions from '../actions';
 import * as loadingTypes from '../constants/LoadingTypes';
+import * as snackBarState from '../constants/ErrorSnackbarStates';
 import AboutRecord from '../records/About';
 import ArticleRecord from '../records/Article';
+import XHRErrorRecord from '../records/XHRError';
 
 export const initialState = {
   about: null,
@@ -45,8 +47,13 @@ const projects = createReducer({
 }, initialState.projects);
 
 const errors = createReducer({
-  // TODO: should return immutable object.
-  [actions.notifyErrorToUser]: (_1, payload) => ({ ...payload }),
+  [actions.notifyErrorToUser]: (_1, payload) => (
+    new XHRErrorRecord({
+      ...payload,
+      showState: snackBarState.SHOW,
+    })
+  ),
+  [actions.resetErrorNotify]: state => state.merge({ showState: snackBarState.HIDE }),
 }, initialState.errors);
 
 export default combineReducers(

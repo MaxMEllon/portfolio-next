@@ -38,6 +38,11 @@ function* aboutTask() {
   yield put(actions.endFetch());
 }
 
+/**
+ * artilcTask()
+ * fetch `artile` infomation by server, and dispatch to reducer.
+ * this is forked by `rootSaga()`
+ */
 function* articlesTask() {
   yield put(actions.startFetch());
   try {
@@ -50,8 +55,16 @@ function* articlesTask() {
   yield put(actions.endFetch());
 }
 
-function* errorHandlingTask() {
-  yield put(actions.notifyErrorToUser);
+function* errorHandlingTask(action) {
+  const { payload } = action;
+  const { response, message } = payload;
+  yield put(actions.notifyErrorToUser({
+    status: response.status,
+    message,
+    userMessage: `${response.status}エラーにより，データの取得に失敗しました．`,
+  }));
+  yield delay(5000);
+  yield put(actions.resetErrorNotify());
 }
 
 export default function* rootSaga() {

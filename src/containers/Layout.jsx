@@ -2,6 +2,7 @@ import React from 'react';
 import RouteCSSTransitionGroup from './RouteCSSTransitionGroup';
 import Navbar from '../components/Navbar';
 import Loading from '../nodes/Loading';
+import ErrorSnackbar from '../components/ErrorSnackbar';
 
 export default function Layout({ children }) {
   return (
@@ -14,6 +15,7 @@ export default function Layout({ children }) {
       >
         {children}
       </RouteCSSTransitionGroup>
+      <ErrorSnackbar />
     </div>
   );
 }
