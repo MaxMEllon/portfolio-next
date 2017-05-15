@@ -1,8 +1,8 @@
-import _ from 'lodash';
-
 const isNil = obj => obj === null || obj === undefined;
 
-const isMethod = (key, obj) => obj !== 'constructor' && _.isFunction(obj[key]);
+const isFunction = any => toString.call(any) === '[object Function]';
+
+const isMethod = (key, obj) => obj !== 'constructor' && isFunction(obj[key]);
 
 const autoBind = (instance) => {
   const self = instance;
@@ -15,6 +15,7 @@ const autoBind = (instance) => {
 
 const M = {
   isNil,
+  isFunction,
   isMethod,
   autoBind,
 };

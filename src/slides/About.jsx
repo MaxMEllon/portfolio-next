@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Icon } from 'react-fa';
@@ -33,8 +32,8 @@ class About extends React.Component {
                 <td className={styles.content}>{this.props.about.name}</td>
               </tr>
               {
-                _.map(this.props.about.game, (game, key) => (
-                  <tr className={styles.row} key={key}>
+                this.props.about.game.map((game, key) => (
+                  <tr className={styles.row} key={game.name}>
                     <td className={styles.label}>{key === 0 ? 'Game' : ''}</td>
                     <td className={styles.content}>{game.name}</td>
                     <td className={styles.detail}>{game.detail}</td>
@@ -42,8 +41,8 @@ class About extends React.Component {
                 ))
               }
               {
-                _.map(this.props.about.favorite, (favorite, key) => (
-                  <tr className={styles.row} key={key}>
+                this.props.about.favorite.map((favorite, key) => (
+                  <tr className={styles.row} key={favorite}>
                     <td className={styles.label}>{key === 0 ? 'Favorite' : ''}</td>
                     <td className={styles.content}>{favorite}</td>
                   </tr>
