@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './navbar.css';
 import NavItem from '../nodes/NavItem';
 import NavIconItem from '../nodes/NavIconItem';
@@ -6,7 +7,9 @@ import NavIconItem from '../nodes/NavIconItem';
 export default function Navbar({ title }) {
   return (
     <nav className={styles.nav}>
-      <span className={styles.title}>{title}</span>
+      <span className={styles.title}>
+        <Link to={{ pathname: '/' }}>{title}</Link>
+      </span>
       <ul className={styles.rightBox}>
         <NavItem to="/about" content="About" />
         <NavItem to="/articles" content="Articles" />

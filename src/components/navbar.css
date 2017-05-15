@@ -6,10 +6,25 @@
   background-color: #006c61;
   color: white;
   z-index: 100;
+  box-shadow: 0px -2px 20px 1px black;
 }
 
 .title {
   padding-left: 40px;
+}
+
+.title > a {
+  color: white;
+  text-decoration: initial;
+  transition: all .2s ease-in-out;
+}
+
+.title > a:hover {
+  font-size: 20px;
+  color: #60ff00;
+  text-shadow: 0px 0px 10px rgb(255, 255, 255);
+  cursor: pointer;
+  transition: all .2s ease-in-out;
 }
 
 .rightBox {

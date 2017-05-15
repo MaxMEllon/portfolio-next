@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Icon } from 'react-fa';
 import styles from './about.css';
-import M from '../utils/M';
+import { isNil } from '../utils/M';
 import LoadingSlide from './LoadingSlider';
 import { fetchAboutInfo } from '../actions';
 
-class About extends React.Component {
+class About extends Component {
   componentDidMount() {
     this.props.dispatch(fetchAboutInfo());
   }
 
   render() {
-    if (M.isNil(this.props.about)) return <LoadingSlide />;
+    if (isNil(this.props.about)) return <LoadingSlide />;
     return (
       <div className={styles.container}>
         <div className={styles.paper}>

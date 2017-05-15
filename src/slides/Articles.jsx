@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Icon } from 'react-fa';
 import styles from './articles.css';
-import M from '../utils/M';
+import { isNil } from '../utils/M';
 import LoadingSlide from './LoadingSlider';
 import { fetchArticles } from '../actions';
 
@@ -12,7 +12,7 @@ class Articles extends React.Component {
   }
 
   render() {
-    if (M.isNil(this.props.articles)) return <LoadingSlide />;
+    if (isNil(this.props.articles)) return <LoadingSlide />;
     return (
       <div className={styles.container}>
         <div className={styles.paper}>

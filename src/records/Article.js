@@ -1,5 +1,5 @@
 import { Record } from 'immutable';
-import M from '../utils/M';
+import { autoBind } from '../utils/M';
 
 const defaultValue = {
   title: null,
@@ -9,6 +9,6 @@ const defaultValue = {
 export default class ArticleRecord extends Record(defaultValue) {
   constructor(article) {
     super({ ...article });
-    M.autoBind(this);
+    autoBind(this);
   }
 }

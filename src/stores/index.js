@@ -1,7 +1,7 @@
 import { createLogger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { createStore, applyMiddleware, compose } from 'redux';
-import { Iterable } from 'immutable';
+import M from '../utils/M';
 import reducer from '../reducers';
 import rootSaga from '../sagas';
 
@@ -9,7 +9,7 @@ const stateTransformer = (state) => {
   const newState = {};
   Object.keys(state).forEach((k) => {
     const v = state[k];
-    newState[k] = Iterable.isIterable(v) ? v.toJS() : v;
+    newState[k] = M.isImmutable(v) ? v.toJS() : v;
   });
   return newState;
 };

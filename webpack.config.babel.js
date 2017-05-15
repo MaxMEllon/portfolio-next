@@ -15,35 +15,26 @@ console.log(`
 `);
 
 // Entry /* {{{
-const devEntry = [
-  'babel-polyfill',
-  'react-hot-loader/patch',
-  'webpack/hot/only-dev-server',
-  'webpack-dev-server/client?http://localhost:3000',
-  './src/main.jsx',
-];
-
-const prodEntry = [
-  'babel-polyfill',
-  './src/main.jsx',
-];
+const entry = () => (
+  DEV ? [
+    'babel-polyfill',
+    'react-hot-loader/patch',
+    'webpack/hot/only-dev-server',
+    'webpack-dev-server/client?http://localhost:3000',
+    './src/main.jsx',
+  ] : [
+    'babel-polyfill',
+    './src/main.jsx',
+  ]
+);
 // */ }}}
 
 // Loaders /* {{{
-const jsxLoader = () => (
-  fun(
-    ['development', () => ({
-      test: /\.jsx?$/,
-      exclude: /node_modules|bower_components/,
-      use: ['babel-loader'],
-    })],
-    ['production', () => ({
-      test: /\.jsx?$/,
-      use: ['babel-loader'],
-    })],
-    [$, () => { throw new TypeError('Unexpected LoadingTypes.'); }],
-  )(process.env.NODE_ENV)
-);
+const jsxLoader = () => ({
+  test: /\.jsx?$/,
+  exclude: /node_modules|bower_components/,
+  use: ['babel-loader'],
+});
 
 const imageLoader = () => ({
   test: /\.jpg$|\.png$|\.gif$/,
@@ -55,7 +46,7 @@ const styleLoader = () => ({
   use: ExtractTextPlugin.extract({
     fallback: 'style-loader',
     use: [
-      'css-loader?modules&localIdentName=[path][name]---[local]---[hash:base64:5]',
+      'css-loader?modules&localIdentName=[name]-[hash:base64:5]',
       'postcss-loader',
     ],
   }),
@@ -126,6 +117,14 @@ const getPlugins = () => {
 };
 // */ }}}
 
+// Output /* {{{
+const output = {
+  path: `${__dirname}/docs/`,
+  filename: 'bundle.js',
+  libraryTarget: 'umd',
+};
+// */ }}}
+
 // Server /* {{{
 const devServer = {
   host: 'localhost',
@@ -137,13 +136,9 @@ const devServer = {
 
 module.exports = () => ({
   entry: {
-    app: DEV ? devEntry : prodEntry,
+    app: entry(),
   },
-  output: {
-    path: `${__dirname}/docs/`,
-    filename: 'bundle.js',
-    libraryTarget: 'umd',
-  },
+  output,
   resolve: {
     extensions: ['.js', '.jsx'],
   },

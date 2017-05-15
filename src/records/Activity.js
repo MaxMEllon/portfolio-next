@@ -1,5 +1,5 @@
 import { Record } from 'immutable';
-import M from '../utils/M';
+import { autoBind } from '../utils/M';
 
 const defaultValue = {
   detail: null,
@@ -11,6 +11,6 @@ const defaultValue = {
 export default class ActivityRecord extends Record(defaultValue) {
   constructor(activity) {
     super({ ...activity });
-    M.autoBind(this);
+    autoBind(this);
   }
 }

@@ -12,6 +12,7 @@ export const initialState = {
   activities: null,
   projects: null,
   environment: null,
+  errors: null,
   loading: loadingTypes.INITIAL,
 };
 
@@ -43,6 +44,11 @@ const activities = createReducer({
 const projects = createReducer({
 }, initialState.projects);
 
+const errors = createReducer({
+  // TODO: should return immutable object.
+  [actions.notifyErrorToUser]: (_1, payload) => ({ ...payload }),
+}, initialState.errors);
+
 export default combineReducers(
   {
     about,
@@ -51,5 +57,6 @@ export default combineReducers(
     activities,
     projects,
     loading,
+    errors,
   },
 );

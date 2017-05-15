@@ -1,10 +1,17 @@
-const isNil = obj => obj === null || obj === undefined;
+import { Iterable } from 'immutable';
 
-const isFunction = any => toString.call(any) === '[object Function]';
+const compareTypeByStr = (v, t) => toString.call(v) === `[object ${t}]`;
 
-const isMethod = (key, obj) => obj !== 'constructor' && isFunction(obj[key]);
+/* eslint no-void: 0 */
+export const isNil = obj => obj === null || obj === void 0;
+export const isFunction = any => compareTypeByStr(any, 'Function');
+export const isString = any => compareTypeByStr(any, 'String');
+export const isArray = any => compareTypeByStr(any, 'Array');
+export const isImmutable = any => Iterable.isIterable(any);
+export const isBlank = any => (isString(any) && any === '') || isNil(any);
+export const isMethod = (key, obj) => key !== 'constructor' && isFunction(obj[key]);
 
-const autoBind = (instance) => {
+export const autoBind = (instance) => {
   const self = instance;
   Object.getOwnPropertyNames(Object.getPrototypeOf(self)).forEach((key) => {
     if (isMethod(key, self)) {
@@ -16,7 +23,11 @@ const autoBind = (instance) => {
 const M = {
   isNil,
   isFunction,
+  isArray,
+  isString,
   isMethod,
+  isBlank,
+  isImmutable,
   autoBind,
 };
 

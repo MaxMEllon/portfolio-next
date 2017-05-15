@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './index.css';
 import Block from '../nodes/Block';
+import HeartStone from '../nodes/HeartStone';
 
 export default function Index() {
   return (
     <div className={styles.container}>
+      <HeartStone />
       <div className={styles.upBox}>
         <p>It is not the wing of strong's,</p>
       </div>
