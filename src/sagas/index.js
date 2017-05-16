@@ -61,7 +61,7 @@ function* errorHandlingTask(action) {
   yield put(actions.notifyErrorToUser({
     status: response.status,
     message,
-    userMessage: `${response.status}エラーにより，データの取得に失敗しました．`,
+    userMessage: '通信エラーにより，データの取得に失敗しました．',
   }));
   yield delay(5000);
   yield put(actions.resetErrorNotify());
