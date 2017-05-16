@@ -2,6 +2,7 @@ import axios from 'axios';
 import { put, call, takeEvery } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import * as actions from '../actions';
+import { get } from '../utils/M';
 
 /**
  * fetchAboutPromisify()
@@ -57,13 +58,12 @@ function* articlesTask() {
 
 function* errorHandlingTask(action) {
   const { payload } = action;
-  const { response, message } = payload;
   yield put(actions.notifyErrorToUser({
-    status: response.status,
-    message,
+    status: get(payload, ['response', 'status'], 0),
+    message: get(payload, ['message'], 'No Message'),
     userMessage: '通信エラーにより，データの取得に失敗しました．',
   }));
-  yield delay(5000);
+  yield delay(10000);
   yield put(actions.resetErrorNotify());
 }
 
