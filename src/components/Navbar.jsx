@@ -1,10 +1,15 @@
+// @flow
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './navbar.css';
 import NavItem from '../nodes/NavItem';
 import NavIconItem from '../nodes/NavIconItem';
 
-export default function Navbar({ title }) {
+type Props = {
+  title: string,
+};
+
+export default function Navbar({ title } : Props) {
   return (
     <nav className={styles.nav}>
       <span className={styles.title}>

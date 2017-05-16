@@ -1,3 +1,4 @@
+// @flow
 import '!style-loader!css-loader!reset.css/reset.css';
 import '!style-loader!css-loader!font-awesome/css/font-awesome.min.css';
 import '!style-loader!css-loader!./layout.css';

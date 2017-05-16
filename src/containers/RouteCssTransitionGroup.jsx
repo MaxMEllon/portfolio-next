@@ -1,21 +1,38 @@
-import React, { Component } from 'react';
+// @flow
+import React, { Component, Element } from 'react';
 import PropTypes from 'prop-types';
 import ReactCSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import StaticContainer from 'react-static-container';
 
 const getPathname = router => router.route.location.pathname;
 
-export default class RouteCSSTransitionGroup extends Component {
+type Props = {
+  component: string,
+  transitionName: string,
+  transitionEnterTimeout: number,
+  transitionLeaveTimeout: number,
+  children: Element<any>,
+};
+
+type State = {
+  previousPathname: ?string,
+};
+
+type Context = {
+  router: any,
+};
+
+export default class RouteCSSTransitionGroup extends Component<any, Props, State> {
   static contextTypes = {
     router: PropTypes.object,
   }
 
-  constructor(props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
     this.state = { previousPathname: null };
   }
 
-  componentWillReceiveProps(nextProps, nextContext) {
+  componentWillReceiveProps(nextProps : Props, nextContext : Context) {
     const nextPathname = getPathname(nextContext.router);
     const currentPathname = getPathname(this.context.router);
     if (nextPathname !== currentPathname) {

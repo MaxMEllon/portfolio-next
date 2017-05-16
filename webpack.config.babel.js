@@ -143,6 +143,7 @@ module.exports = () => ({
     extensions: ['.js', '.jsx'],
   },
   module: { loaders: getUsingLoader() },
+  performance: { hints: false },
   devServer,
   plugins: getPlugins(),
   devtool: DEV ? 'inline-source-map' : '',

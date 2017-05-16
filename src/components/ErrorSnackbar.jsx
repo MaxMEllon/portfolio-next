@@ -1,26 +1,43 @@
+// @flow
 import React, { Component } from 'react';
 import autoBind from 'react-autobind';
 import { connect } from 'react-redux';
+import type { Dispatch as ReduxDispatch } from 'redux';
 import fun from 'funcy';
-import { Icon } from 'react-fa'
+import { Icon } from 'react-fa';
 import animate from 'animate.css';
 import styles from './errorsnackbar.css';
 import { isNil } from '../utils/M';
 import * as barState from '../constants/ErrorSnackbarStates';
 import { resetErrorNotify } from '../actions';
 
-// const $ = fun.parameter;
+type ShowStateEnum =
+  | typeof barState.HIDE
+  | typeof barState.INITIAL
+  | typeof barState.SHOW;
 
-class ErrorSnackbar extends Component {
-  constructor(props) {
+type State = {
+  className: string,
+  errors: any,
+  showState: ShowStateEnum,
+};
+
+type Props = {
+  errors: any,
+  dispatch: ReduxDispatch<*>,
+};
+
+class ErrorSnackbar extends Component<any, Props, State> {
+  state: State;
+
+  constructor(props: Props) {
     super(props);
+    this.state = {
+      className: '',
+      errors: null,
+      showState: barState.INITIAL,
+    };
     autoBind(this);
-  }
-
-  state = {
-    className: '',
-    errors: null,
-    showState: barState.INITIAL,
   }
 
   componentWillReceiveProps(nextProps) {
@@ -48,9 +65,9 @@ class ErrorSnackbar extends Component {
     return (
       <div className={`${styles.container} ${className}`}>
         <span>{errors.userMessage}</span>
-        <div className={styles.rightBox} onClick={this.onClose}>
+        <button className={styles.rightBox} onClick={this.onClose}>
           <Icon name="close" size="2x" />
-        </div>
+        </button>
       </div>
     );
   }

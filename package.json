@@ -11,7 +11,9 @@
     "lint": "npm-run-all -c --parallel lint:*",
     "fmt:js": "eslint --fix `git ls-files | grep -v config | grep -E \\.jsx\\?\\$`",
     "fmt:css": "stylefmt src/**/*.css",
-    "fmt": "npm-run-all -c --parallel fmt:*"
+    "fmt": "npm-run-all -c --parallel fmt:*",
+    "flow": "flow",
+    "flow-typed": "flow-typed install"
   },
   "babel": {
     "presets": [
@@ -25,7 +27,9 @@
       "react"
     ],
     "plugins": [
-      "react-hot-loader/babel"
+      "react-hot-loader/babel",
+      "transform-flow-strip-types"
+
     ]
   },
   "devDependencies": {
@@ -45,6 +49,8 @@
     "eslint-plugin-react": "^6.9.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
+    "flow-bin": "^0.46.0",
+    "flow-typed": "^2.1.2",
     "npm-run-all": "^4.0.2",
     "postcss": "^6.0.1",
     "postcss-cssnext": "^2.10.0",

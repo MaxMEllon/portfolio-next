@@ -1,3 +1,4 @@
-export const INITIAL = 'INITIAL';
-export const HIDE = 'HIDE';
-export const SHOW = 'SHOW';
+// @flow
+export const INITIAL : string = 'INITIAL';
+export const HIDE : string = 'HIDE';
+export const SHOW : string = 'SHOW';
