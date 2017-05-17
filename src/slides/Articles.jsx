@@ -1,4 +1,6 @@
+// @flow
 import React from 'react';
+import type { Dispatch as ReduxDispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Icon } from 'react-fa';
 import styles from './articles.css';
@@ -6,7 +8,12 @@ import { isNil } from '../utils/M';
 import LoadingSlide from './LoadingSlider';
 import { fetchArticles } from '../actions';
 
-class Articles extends React.Component {
+type Props = {
+  articles: any,
+  dispatch: ReduxDispatch<*>,
+}
+
+class Articles extends React.Component<any, Props, any> {
   componentDidMount() {
     this.props.dispatch(fetchArticles());
   }

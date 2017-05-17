@@ -1,4 +1,6 @@
+// @flow
 import React, { Component } from 'react';
+import type { Dispatch as ReduxDispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Icon } from 'react-fa';
 import styles from './about.css';
@@ -6,7 +8,12 @@ import { isNil } from '../utils/M';
 import LoadingSlide from './LoadingSlider';
 import { fetchAboutInfo } from '../actions';
 
-class About extends Component {
+type Props = {
+  about: any,
+  dispatch: ReduxDispatch<*>,
+}
+
+class About extends Component<any, Props, any> {
   componentDidMount() {
     this.props.dispatch(fetchAboutInfo());
   }

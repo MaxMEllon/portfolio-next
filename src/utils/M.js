@@ -1,20 +1,31 @@
+// @flow
 import { Iterable } from 'immutable';
 
-const compareTypeByStr = (v, t) => toString.call(v) === `[object ${t}]`;
-
-const MyTypeError = (name, message) => (
-  new TypeError(`Unexpected type in ${name}, ${message}`)
-);
+const compareTypeByStr = (v: any, t: string) => toString.call(v) === `[object ${t}]`;
 
 /* eslint no-void: 0 */
-export const isNil = obj => obj === null || obj === void 0;
-export const isFunction = any => compareTypeByStr(any, 'Function');
-export const isString = any => compareTypeByStr(any, 'String');
-export const isArray = any => compareTypeByStr(any, 'Array');
-export const isObject = any => compareTypeByStr(any, 'Object');
-export const isImmutable = any => Iterable.isIterable(any);
-export const isBlank = any => isNil(any) || (isString(any) && any === '');
-export const isMethod = (key, obj) => key !== 'constructor' && isFunction(obj[key]);
+export const isNil = (obj: any) => obj === null || obj === void 0;
+
+/**
+ * isFunction()
+ * dynamic compare `maybeFunc`.
+ * @param maybeFunc {any}
+ * @return {boolean}
+ */
+export const isFunction = (maybeFunc: any) => compareTypeByStr(maybeFunc, 'Function');
+
+/**
+ * isString()
+ * dynamic compare `maybeString`.
+ * @param maybeString {any}
+ * @return {boolean}
+ */
+export const isString = (maybeString: any) => compareTypeByStr(maybeString, 'String');
+export const isArray = (any: any) => compareTypeByStr(any, 'Array');
+export const isObject = (any: any) => compareTypeByStr(any, 'Object');
+export const isImmutable = (any: any) => Iterable.isIterable(any);
+export const isBlank = (any: any) => isNil(any) || (isString(any) && any === '');
+export const isMethod = (key: string, obj: any) => key !== 'constructor' && isFunction(obj[key]);
 
 /**
  * get()
@@ -25,21 +36,24 @@ export const isMethod = (key, obj) => key !== 'constructor' && isFunction(obj[ke
  * @param {any} [defaultValue]
  * @return {any}
  */
-export const get = (target, path, defaultValue = undefined) => {
+export const get = (target: any, path: Array<string>, defaultValue: any = undefined) => {
   if (isNil(target)) return undefined;
-  if (!isArray(path)) throw MyTypeError('M.get()', '`path` expected Array<String>');
   let object = target;
   let index = 0;
   const length = path.length;
   while (!isNil(object) && index < length) {
-    if (isBlank(path[index])) throw MyTypeError('M.get()', '`path[]` expected String');
-    object = object[path[index]];
-    index += 1;
+    /* eslint no-plusplus: 0 */
+    object = object[path[index++]];
   }
   return (index && index === length) ? object : defaultValue;
 };
 
-export const autoBind = (instance) => {
+/**
+ * autoBind()
+ * This function bind to method of instance.
+ * @param {any} instance
+ */
+export const autoBind = (instance: any) => {
   const self = instance;
   Object.getOwnPropertyNames(Object.getPrototypeOf(self)).forEach((key) => {
     if (isMethod(key, self)) {
