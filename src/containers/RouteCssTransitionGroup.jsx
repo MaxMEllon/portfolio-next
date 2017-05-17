@@ -32,7 +32,7 @@ export default class RouteCSSTransitionGroup extends Component<any, Props, State
     this.state = { previousPathname: null };
   }
 
-  componentWillReceiveProps(nextProps : Props, nextContext : Context) {
+  componentWillReceiveProps(nextProps: Props, nextContext?: any) {
     const nextPathname = getPathname(nextContext.router);
     const currentPathname = getPathname(this.context.router);
     if (nextPathname !== currentPathname) {

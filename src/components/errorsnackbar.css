@@ -21,6 +21,8 @@
   height: 50px;
   line-height: 55px;
   color: white;
+  background-color: initial;
+  border: none;
 }
 
 .rightBox > span:hover {

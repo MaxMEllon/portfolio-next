@@ -1,3 +1,4 @@
+// @flow
 import axios from 'axios';
 import { put, call, takeEvery } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
@@ -56,6 +57,11 @@ function* articlesTask() {
   yield put(actions.endFetch());
 }
 
+/**
+ * errorHandlingTask()
+ * This tasks for handling a thrown error, and notify to reducer.
+ * this is forked by `rootSaga()`
+ */
 function* errorHandlingTask(action) {
   const { payload } = action;
   yield put(actions.notifyErrorToUser({

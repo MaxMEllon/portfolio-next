@@ -13,7 +13,8 @@
     "fmt:css": "stylefmt src/**/*.css",
     "fmt": "npm-run-all -c --parallel fmt:*",
     "flow": "flow",
-    "flow-typed": "flow-typed install"
+    "flow-typed": "flow-typed install",
+    "flow-watch": "flow-watch"
   },
   "babel": {
     "presets": [
@@ -29,7 +30,6 @@
     "plugins": [
       "react-hot-loader/babel",
       "transform-flow-strip-types"
-
     ]
   },
   "devDependencies": {
@@ -51,6 +51,7 @@
     "file-loader": "^0.11.1",
     "flow-bin": "^0.46.0",
     "flow-typed": "^2.1.2",
+    "flow-watch": "^1.1.1",
     "npm-run-all": "^4.0.2",
     "postcss": "^6.0.1",
     "postcss-cssnext": "^2.10.0",
