@@ -40,7 +40,7 @@ class ErrorSnackbar extends Component<any, Props, State> {
     autoBind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: Props) {
     this.state.showState = nextProps.errors.showState;
     fun(
       [barState.HIDE, () => {
