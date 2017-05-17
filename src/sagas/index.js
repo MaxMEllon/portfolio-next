@@ -6,22 +6,12 @@ import * as actions from '../actions';
 import { get } from '../utils/M';
 
 /**
- * fetchAboutPromisify()
+ * axiosGetWrapper()
  * wrapped axios.get() for effects of redux-saga.
- * @return {Promise} promisify XHR by axios
+ * @params {string}
+ * @return {Promise} AxiosPromise to Promise
  */
-const fetchAboutPromisify = () => (
-  axios.get(`${process.env.API_BASE_URL}/about.json`)
-);
-
-/**
- * fetchArticlesPromisify()
- * wrapped axios.get() for effects of redux-saga.
- * @return {Promise} promisify XHR by axios
- */
-const fetchArticlesPromisify = () => (
-  axios.get(`${process.env.API_BASE_URL}/article.json`)
-);
+const axiosGetWrapper = (url: string) => axios.get(url);
 
 /**
  * aboutTask()
@@ -31,7 +21,8 @@ const fetchArticlesPromisify = () => (
 function* aboutTask() {
   yield put(actions.startFetch());
   try {
-    const response = yield call(fetchAboutPromisify);
+    const { API_BASE_URL } = process.env;
+    const response = yield call(axiosGetWrapper, `${API_BASE_URL}/about.json`);
     yield delay(200);
     yield put(actions.okFetchAboutInfo(response.data));
   } catch (err) {
@@ -48,7 +39,8 @@ function* aboutTask() {
 function* articlesTask() {
   yield put(actions.startFetch());
   try {
-    const response = yield call(fetchArticlesPromisify);
+    const { API_BASE_URL } = process.env;
+    const response = yield call(axiosGetWrapper, `${API_BASE_URL}/article.json`);
     yield delay(200);
     yield put(actions.okFetchArticles(response.data));
   } catch (err) {
