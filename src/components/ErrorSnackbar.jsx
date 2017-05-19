@@ -74,5 +74,5 @@ class ErrorSnackbar extends Component<any, Props, State> {
 }
 
 export default connect(
-  state => ({ errors: state.errors }),
+  (state: any) => ({ errors: state.errors }),
 )(ErrorSnackbar);

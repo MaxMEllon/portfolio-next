@@ -17,7 +17,7 @@ export const isFunction = (maybeFunc: any) => compareTypeByStr(maybeFunc, 'Funct
 /**
  * isString()
  * dynamic compare `maybeString`.
- * @param maybeString {any}
+ * @param  {any} maybeString
  * @return {boolean}
  */
 export const isString = (maybeString: any) => compareTypeByStr(maybeString, 'String');

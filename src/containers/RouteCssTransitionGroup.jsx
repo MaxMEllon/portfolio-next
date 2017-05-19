@@ -15,7 +15,7 @@ type Props = {
 };
 
 type State = {
-  previousPathname: ?string,
+  previousPathname: string | null,
 };
 
 type Context = {
@@ -23,6 +23,9 @@ type Context = {
 };
 
 export default class RouteCSSTransitionGroup extends Component<any, Props, State> {
+  state: State;
+  context: Context;
+
   static contextTypes = {
     router: PropTypes.object,
   }
@@ -32,7 +35,7 @@ export default class RouteCSSTransitionGroup extends Component<any, Props, State
     this.state = { previousPathname: null };
   }
 
-  componentWillReceiveProps(nextProps: Props, nextContext?: any) {
+  componentWillReceiveProps(nextProps: Props, nextContext: any) {
     const nextPathname = getPathname(nextContext.router);
     const currentPathname = getPathname(this.context.router);
     if (nextPathname !== currentPathname) {

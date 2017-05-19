@@ -9,7 +9,7 @@
     "lint:js": "eslint src/**/*.jsx",
     "lint:css": "stylelint src/**/*.css",
     "lint": "npm-run-all -c --parallel lint:*",
-    "fmt:js": "eslint --fix `git ls-files | grep -v config | grep -E \\.jsx\\?\\$`",
+    "fmt:js": "eslint --fix src/**/*.jsx",
     "fmt:css": "stylefmt src/**/*.css",
     "fmt": "npm-run-all -c --parallel fmt:*",
     "flow": "flow",

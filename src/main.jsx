@@ -1,4 +1,5 @@
 import React from 'react';
+import Promise from 'bluebird';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
@@ -7,6 +8,8 @@ import createStore from './stores';
 
 const el = document.getElementById('root');
 const store = createStore();
+
+window.Promise = Promise;
 
 const render = (Component) => {
   ReactDOM.render(

@@ -22,7 +22,7 @@ function* aboutTask() {
   yield put(actions.startFetch());
   try {
     const { API_BASE_URL } = process.env;
-    const response = yield call(axiosGetWrapper, `${API_BASE_URL}/about.json`);
+    const response = yield call(axiosGetWrapper, `${String(API_BASE_URL)}/about.json`);
     yield delay(200);
     yield put(actions.okFetchAboutInfo(response.data));
   } catch (err) {
@@ -40,7 +40,7 @@ function* articlesTask() {
   yield put(actions.startFetch());
   try {
     const { API_BASE_URL } = process.env;
-    const response = yield call(axiosGetWrapper, `${API_BASE_URL}/article.json`);
+    const response = yield call(axiosGetWrapper, `${String(API_BASE_URL)}/article.json`);
     yield delay(200);
     yield put(actions.okFetchArticles(response.data));
   } catch (err) {
@@ -65,7 +65,7 @@ function* errorHandlingTask(action) {
   yield put(actions.resetErrorNotify());
 }
 
-export default function* rootSaga() {
+export default function* rootSaga(): Generator<void, any, any> {
   yield takeEvery(actions.FETCH_ABOUT_INFO, aboutTask);
   yield takeEvery(actions.FETCH_ARTICLES, articlesTask);
   yield takeEvery(actions.FAIL_XHR, errorHandlingTask);

@@ -10,6 +10,7 @@ env:
 globals:
   window: false
   document: false
+  Generator: true
 
 rules:
   import/no-webpack-loader-syntax: [0]

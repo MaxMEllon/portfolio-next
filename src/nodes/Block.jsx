@@ -4,7 +4,7 @@ import autoBind from 'react-autobind';
 import { Link } from 'react-router-dom';
 import styles from './block.css';
 
-type Props =  {
+type Props = {
   to: string,
   content: string,
   backgroundColor: string,
