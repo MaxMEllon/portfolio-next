@@ -4,14 +4,16 @@ const Dotenv = require('dotenv-webpack');
 const fun = require('funcy');
 
 const $ = fun.parameter;
-const DEV = process.env.NODE_ENV !== 'production';
+const DEV = process.env.NODE_ENV === 'development';
+const TEST = process.env.NODE_ENV === 'test';
 
 const green = '\u001b[32m';
 const reset = '\u001b[0m';
 
 /* eslint no-console: 0 */
 console.log(`
-[DEV] ==> ${green}${DEV}${reset}
+[DEV]  ==> ${green}${DEV}${reset}
+[TEST] ==> ${green}${TEST}${reset}
 `);
 
 // Entry /* {{{
@@ -30,11 +32,25 @@ const entry = () => (
 // */ }}}
 
 // Loaders /* {{{
-const jsxLoader = () => ({
-  test: /\.jsx?$/,
-  exclude: /node_modules|bower_components/,
-  use: ['babel-loader'],
-});
+const jsxLoader = () => {
+  const config = {
+    test: /\.jsx?$/,
+    exclude: /node_modules|bower_components/,
+    use: {
+      loader: 'babel-loader',
+    },
+  };
+  if (process.env.NODE_ENV === 'test') {
+    return Object.assign({}, config.use, {
+      loader: 'babel-loader',
+      options: {
+        presets: ['es2015', 'stage-0', 'react'],
+        plugins: ['transform-flow-strip-types', 'add-module-exports'],
+      },
+    });
+  }
+  return config;
+};
 
 const imageLoader = () => ({
   test: /\.jpg$|\.png$|\.gif$/,
@@ -97,21 +113,21 @@ const getPlugins = () => {
   plugins
     .push(new ExtractTextPlugin('bundle.css'))
     .push(new Dotenv({ path: './.env' }));
-  fun(
-    ['development', () => (
+  switch (process.env.NODE_ENV) {
+    case 'development':
       plugins
         .push(new webpack.HotModuleReplacementPlugin())
         .push(new webpack.NamedModulesPlugin())
-        .push(new webpack.NoEmitOnErrorsPlugin())
-    )],
-    ['production', () => (
+        .push(new webpack.NoEmitOnErrorsPlugin());
+      break;
+    case 'production':
       plugins
         .push(new webpack.DefinePlugin(defineOpt))
         .push(new webpack.LoaderOptionsPlugin({ minimize: true }))
-        .push(new webpack.optimize.UglifyJsPlugin(uglifyOpt))
-    )],
-    [$, () => { throw new TypeError('Unexpected LoadingTypes.'); }],
-  )(process.env.NODE_ENV);
+        .push(new webpack.optimize.UglifyJsPlugin(uglifyOpt));
+      break;
+    default:
+  }
   console.log('');
   return plugins;
 };
@@ -134,17 +150,37 @@ const devServer = {
 };
 // */ }}}
 
-module.exports = () => ({
-  entry: {
-    app: entry(),
-  },
-  output,
-  resolve: {
-    extensions: ['.js', '.jsx'],
-  },
-  module: { loaders: getUsingLoader() },
-  performance: { hints: false },
-  devServer,
-  plugins: getPlugins(),
-  devtool: DEV ? 'inline-source-map' : '',
-});
+module.exports = () => {
+  if (process.env.NODE_ENV === 'test') {
+    return {
+      resolve: { extensions: ['.js', '.jsx'] },
+      plugins: getPlugins()
+        .push(new webpack.IgnorePlugin(/react\/addons/))
+        .push(new webpack.IgnorePlugin(/react\/lib\/ReactContext/))
+        .push(new webpack.IgnorePlugin(/react\/lib\/ExecutionEnvironment/)),
+      externals: {
+        cheerio: 'window',
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': 'window',
+      },
+      module: {
+        loaders: getUsingLoader(),
+      },
+    };
+  }
+  return {
+    entry: {
+      app: entry(),
+    },
+    output,
+    resolve: {
+      extensions: ['.js', '.jsx'],
+    },
+    module: { loaders: getUsingLoader() },
+    performance: { hints: false },
+    devServer,
+    plugins: getPlugins(),
+    devtool: DEV ? 'inline-source-map' : '',
+  };
+};
