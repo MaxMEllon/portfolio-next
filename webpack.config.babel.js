@@ -153,6 +153,7 @@ const devServer = {
 module.exports = () => {
   if (process.env.NODE_ENV === 'test') {
     return {
+      devtool: 'inline-source-map',
       resolve: { extensions: ['.js', '.jsx'] },
       plugins: getPlugins()
         .push(new webpack.IgnorePlugin(/react\/addons/))
