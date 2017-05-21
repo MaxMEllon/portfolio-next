@@ -138,6 +138,7 @@ const output = {
   path: `${__dirname}/docs/`,
   filename: 'bundle.js',
   libraryTarget: 'umd',
+  publicPath: './',
 };
 // */ }}}
 

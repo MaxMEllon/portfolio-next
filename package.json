@@ -16,7 +16,9 @@
     "fmt": "npm-run-all -c --parallel fmt:*",
     "flow": "flow",
     "flow-typed": "flow-typed install",
-    "flow-watch": "flow-watch"
+    "flow-watch": "flow-watch",
+    "storybook": "NODE_ENV=development start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "babel": {
     "presets": [
@@ -35,6 +37,7 @@
     ]
   },
   "devDependencies": {
+    "@kadira/storybook": "2.35.3",
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
