@@ -2,7 +2,7 @@
 import React from 'react';
 import styles from './heartstone.css';
 
-export default function SkipStone() {
+export default function HeartStone() {
   return (
     <svg className={styles.heartLoader} viewBox="0 0 90 90" version="1.1">
       <g className={styles.heartLoader__group}>

@@ -163,6 +163,7 @@ module.exports = () => {
         'react/addons': true,
         'react/lib/ExecutionEnvironment': true,
         'react/lib/ReactContext': 'window',
+        'text-encoding': 'window',
       },
       module: {
         loaders: getUsingLoader(),
