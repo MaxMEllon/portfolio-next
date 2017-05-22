@@ -1,6 +1,7 @@
-import assert from 'power-assert';
+import { assert } from 'chai';
 import M from '../M';
 
+/* eslint import/no-named-as-default-member: 0 */
 describe('M', () => {
   it('isNil', () => {
     assert.equal(M.isNil(true), false);

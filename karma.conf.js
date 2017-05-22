@@ -40,6 +40,7 @@ module.exports = (config) => {
 
     plugins: [
       'karma-chrome-launcher',
+      'karma-electron',
       'karma-mocha',
       'karma-webpack',
     ],
@@ -62,7 +63,7 @@ module.exports = (config) => {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['Electron'],
 
 
     // Continuous Integration mode
@@ -73,6 +74,9 @@ module.exports = (config) => {
     // how many browser should be started simultaneous
     concurrency: Infinity,
 
+    client: {
+      useIframe: false,
+    },
 
     webpack,
   });
