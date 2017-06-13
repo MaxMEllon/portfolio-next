@@ -28,6 +28,26 @@ class Articles extends React.Component<any, Props, any> {
             <span className={styles.title}>About</span>
           </h1>
           <hr className={styles.line} />
+          <table className={styles.table}>
+            <tbody>
+              {
+                this.props.articles.map(ar => (
+                  <tr>
+                    <th className={styles.categoryName}>{ar.get('name')}</th>
+                    <td>
+                      <ul>
+                        {
+                          ar.get('articles').map(co => (
+                            <li>{co.title}</li>
+                          ))
+                        }
+                      </ul>
+                    </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
         </div>
       </div>
     );
